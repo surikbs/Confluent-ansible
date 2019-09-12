@@ -1,0 +1,25 @@
+# Maintained by Ansible
+tickTime=2000
+dataLogDir={{ zk_log_dir }}
+dataDir={{ zk_data_dir }}
+clientPort={{ zk_port }}
+initLimit=10
+syncLimit=5
+maxClientCnxns=60
+minSessionTimeout=4000
+maxSessionTimeout=40000
+autopurge.purgeInterval=24
+autopurge.snapRetainCount=5
+authProvider.1=org.apache.zookeeper.server.auth.SASLAuthenticationProvider
+kerberos.removeHostFromPrincipal=true
+kerberos.removeRealmFromPrincipal=true
+leaderServes=yes
+requireClientAuthScheme=sasl
+jaasLoginRenew=3600000
+
+{% for key, value in zookeeper.properties.items() %}
+{{key}}={{value}}
+{% endfor %}
+{% for host in groups['zookeeper'] %}
+server.{{ hostvars[host]['zookeeper_id'] | default(groups.zookeeper.index(host) + 1)}}={{ host }}:2888:3888
+{% endfor %}

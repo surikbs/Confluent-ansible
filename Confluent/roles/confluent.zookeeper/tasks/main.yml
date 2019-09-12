@@ -1,0 +1,28 @@
+- name: zookeeper create directories
+  file:
+    state: directory
+    path: "{{ item }}"
+    mode: 750
+    owner: "{{ zk_user }}"
+    group: "{{ zk_group }}"
+  with_items:
+    - "{{ zk_etc_dir }}"
+    - "{{ zk_data_dir }}"
+    - "{{ zk_log_dir }}"
+
+- name: zookeeper myid file
+  template:
+    src: myid.j2
+    dest: "{{ zk_data_dir }}/myid"
+    mode: 0555
+    owner: "{{ zk_user }}"
+    group: "{{ zk_group }}"
+
+- name: zookeeper create configs
+  template:
+    src: zookeeper.properties.j2
+    dest: "{{ zk_etc_dir }}/zookeeper.properties"
+    mode: 0400
+    owner: "{{ zk_user }}"
+    group: "{{ zk_group }}"
+  register: zookeeper_config

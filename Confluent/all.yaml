@@ -1,0 +1,8 @@
+- name: zookeeper Provisioning
+  hosts: zookeeper
+  gather_facts: no
+  tags:
+    - zookeeper
+  tasks:
+  - import_role:
+      name: confluent.zookeeper
