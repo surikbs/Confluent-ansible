@@ -1,8 +1,17 @@
-- name: zookeeper Provisioning
-  hosts: zookeeper
+#- name: zookeeper Provisioning
+#  hosts: zookeeper
+#  gather_facts: no
+#  tags:
+#    - zookeeper
+#  tasks:
+#  - import_role:
+#      name: confluent.zookeeper
+
+- name: Server Setup
+  hosts: all
   gather_facts: no
   tags:
-    - zookeeper
+    - common
   tasks:
-  - import_role:
-      name: confluent.zookeeper
+    - import_role:
+      name: confluent.common

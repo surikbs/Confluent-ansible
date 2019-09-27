@@ -1,0 +1,12 @@
+- name: copy the tar ball to the respective directory
+  file:
+    state: directory
+    path: "{{ item }}"
+    mode: "0755"
+    owner: "{{ confluent_user }}"
+    group: "{{ confluent_group }}"
+  with_items:
+    - "{{ confluent_appdir }}"
+    - "{{ confluent_appdir }}/bundles"
+    - "{{ confluent_appdir }}/bundles/{{ confluent_version }}"
+    - "{{ confluent_appdir }}/etc"

@@ -1,7 +1,10 @@
-confluent_home: /opt/vcs/pds/
+confluent_user: kafka
+confluent_group: kafka
+confluent_home: /home/kafka
+confluent_appdir: {{ confluent_home }}/confluent
 zookeeper:
   properties:
     clientPort: 2181
 kafka_port: 9092
-confluent_version:
+confluent_version: confluent-5.3.1
 confluent_bundle_path: {{ confluent_home }}/{{ confluent_version }}
