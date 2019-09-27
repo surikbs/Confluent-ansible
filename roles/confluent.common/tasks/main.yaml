@@ -1,4 +1,5 @@
 - name: copy the tar ball to the respective directory
+  become: yes
   become_user: "{{ confluent_user }}"
   file:
     state: directory
