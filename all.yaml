@@ -11,6 +11,7 @@
   hosts: all
   gather_facts: no
   become_user: "{{ confluent_user }}"
+  become_method: su
   tags:
     - common
   tasks:
