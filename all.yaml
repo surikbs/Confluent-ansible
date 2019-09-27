@@ -14,4 +14,4 @@
     - common
   tasks:
     - import_role:
-      name: confluent.common
+        name: confluent.common
