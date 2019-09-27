@@ -8,8 +8,6 @@
 #      name: confluent.zookeeper
 
 - name: Server Setup
-  become: yes
-  become_user: "{{ confluent_user }}"
   hosts: all
   gather_facts: no
   tags:
