@@ -10,6 +10,7 @@
 - name: Server Setup
   hosts: all
   gather_facts: no
+  become_user: "{{ confluent_user }}"
   tags:
     - common
   tasks:
