@@ -1,0 +1,13 @@
+[all]
+confluent_user=vcsgscds
+confluent_home="/home/vcsgscds"
+
+[zk]
+10.175.0.70
+10.175.0.21
+10.175.0.54
+
+[kafka]
+10.175.0.70
+10.175.0.21
+10.175.0.54
