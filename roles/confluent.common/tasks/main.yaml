@@ -1,5 +1,4 @@
 - name: copy the tar ball to the respective directory
-  become_user: kafka
   file:
     state: directory
     path: "{{ item }}"
