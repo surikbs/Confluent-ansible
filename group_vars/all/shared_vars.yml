@@ -11,10 +11,8 @@ confluent_etc_dir: "{{ confluent_appdir }}/etc"
 confluent_log_dir: "{{ confluent_appdir }}/log"
 confluent_data_dir: "{{ confluent_appdir }}/dataDir"
 
-
 zookeeper:
-  properties:
-    clientPort: 2181
+zk_port: 2181
 zk_user: vcsgscds
 zk_group: vcsgscds
 zk_etc_dir: "{{ confluent_etc_dir }}/zk"
