@@ -15,10 +15,10 @@ confluent_data_dir: "{{ confluent_appdir }}/dataDir"
 zookeeper:
   properties:
     clientPort: 2181
-    zk_user: vcsgscds
-    zk_group: vcsgscds
-    zk_etc_dir: "{{ confluent_etc_dir }}/zk"
-    zk_log_dir: "{{ confluent_log_dir }}/zk"
-    zk_data_dir: "{{ confluent_data_dir }}/zk"
+zk_user: vcsgscds
+zk_group: vcsgscds
+zk_etc_dir: "{{ confluent_etc_dir }}/zk"
+zk_log_dir: "{{ confluent_log_dir }}/zk"
+zk_data_dir: "{{ confluent_data_dir }}/zk"
 
 kafka_port: 9092
