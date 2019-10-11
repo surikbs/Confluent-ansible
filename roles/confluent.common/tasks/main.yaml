@@ -10,6 +10,16 @@
     - "{{ confluent_appdir }}/bundles"
     - "{{ confluent_appdir }}/etc"
 
+#- name: Download the tar ball from the confluent website
+#  get_url:
+#    url: http://packages.confluent.io/archive/5.3/confluent-5.3.1-2.12.tar.gz
+#    dest: "{{ confluent_appdir }}/bundles/"
+
+#- name: Download the tar ball from the confluent website
+#  unarchive:
+#    src: "{{ confluent_appdir }}/bundles/{{ confluent_version }}.tar.gz"
+#    dest: "{{ confluent_appdir }}/bundles/"
+
 - name: Download the tar ball from the confluent website
   unarchive:
     src: "{{ tar_location }}/{{ confluent_version }}.tar"
