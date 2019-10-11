@@ -1,6 +1,6 @@
-confluent_user: kafka
-confluent_group: kafka
-confluent_home: /apps/kafka
+confluent_user: vcsgscpds
+confluent_group: vcsgscds
+confluent_home: /opt/vcs/pds
 confluent_appdir: "{{ confluent_home }}/confluent"
 zookeeper:
   properties:
