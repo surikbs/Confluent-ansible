@@ -1,5 +1,5 @@
 confluent_user: vcsgscpds
-confluent_group: vcsgscds
+confluent_group: vcsgscpds
 confluent_home: /opt/vcs/pds
 confluent_appdir: "{{ confluent_home }}/confluent"
 zookeeper:
