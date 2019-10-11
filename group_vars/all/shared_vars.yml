@@ -6,5 +6,5 @@ zookeeper:
   properties:
     clientPort: 2181
 kafka_port: 9092
-confluent_version: confluent-5.3.1
+confluent_version: confluent-5.3.1-2.12
 confluent_bundle_path: "{{ confluent_home }}/{{ confluent_version }}"
