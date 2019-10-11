@@ -15,3 +15,12 @@
   tasks:
     - import_role:
         name: confluent.common
+
+- name: Zookeeper Provisioning
+  hosts: zookeeper
+  gather_facts: no
+  tags:
+    - zookeeper
+  tasks:
+  - import_role:
+      name: confluent.zookeeper
