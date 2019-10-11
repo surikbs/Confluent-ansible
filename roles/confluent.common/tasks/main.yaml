@@ -20,7 +20,7 @@
 #    src: "{{ confluent_appdir }}/bundles/{{ confluent_version }}.tar.gz"
 #    dest: "{{ confluent_appdir }}/bundles/"
 
-- name: Download the tar ball from the confluent website
+- name: Extracting the tar ball to bundles location
   unarchive:
     src: "{{ tar_location }}/{{ confluent_version }}.tar"
     dest: "{{ confluent_appdir }}/bundles/"
