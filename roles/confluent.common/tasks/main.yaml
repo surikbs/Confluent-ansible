@@ -22,5 +22,17 @@
 
 - name: Extracting the tar ball to bundles location
   unarchive:
-    src: "{{ tar_location }}/{{ confluent_version }}.tar"
+    src: "{{ tar_location }}/{{ confluent_tar_version }}.tar"
     dest: "{{ confluent_appdir }}/bundles/"
+
+- name: Symlinks for the confluent bin directory
+  file:
+    state: link
+    src: "{{ confluent_appdir }}//bundles/{{ confluent_version }}/bin"
+    dest: "{{ confluent_appdir }}/bin"
+
+- name: Symlinks for the confluent plugin directory
+  file:
+    state: link
+    src: "{{ confluent_appdir }}//bundles/{{ confluent_version }}/share/java"
+    dest: "{{ confluent_appdir }}/plugins"
