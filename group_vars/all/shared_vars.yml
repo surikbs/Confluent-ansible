@@ -2,9 +2,12 @@ confluent_user: vcsgscds
 confluent_group: vcsgscds
 confluent_home: /opt/vcs/pds
 confluent_appdir: "{{ confluent_home }}/confluent"
+confluent_version: confluent-5.3.1-2.12
+confluent_bundle_path: "{{ confluent_home }}/{{ confluent_version }}"
+tar_location: "/home/vcsgscds/"
+
+
 zookeeper:
   properties:
     clientPort: 2181
 kafka_port: 9092
-confluent_version: confluent-5.3.1-2.12
-confluent_bundle_path: "{{ confluent_home }}/{{ confluent_version }}"
