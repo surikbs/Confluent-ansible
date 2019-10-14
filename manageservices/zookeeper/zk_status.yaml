@@ -1,0 +1,18 @@
+---
+
+- hosts:
+    - zk
+  name: Zookeeper Status
+  tasks:
+    - name: zookeeper status
+      shell: |
+        if [ $(ps ax | grep -i 'org\.apache\.zookeeper\.server\.quorum\.QuorumPeerMain' | grep java | grep -v grep | wc -l) -gt 0 ]
+        then
+          echo Zookeeper Running
+        else
+          echo Zookeeper Not Running
+        fi
+      register: shell_out
+    - debug:
+        var: shell_out.stdout
+...

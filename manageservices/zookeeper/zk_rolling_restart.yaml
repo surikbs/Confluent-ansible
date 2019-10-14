@@ -1,0 +1,17 @@
+---
+
+- hosts:
+    - zk
+  name: Start zookeeper in rolling fashion
+  serial: 1
+  tasks:
+    - name: Starting zookeeper
+      shell: |
+        export KAFKA_HEAP_OPTS="-Xmx1000M"
+        export LOG_DIR={{ kafka_info_log_dir }}
+        {{ zk_bin_dir }}/zookeeper-server-start -daemon {{ zk_etc_dir }}/zookeeper.properties
+      register: shell_out
+    - debug:
+        var: shell_out
+
+...
