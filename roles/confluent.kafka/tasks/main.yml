@@ -4,7 +4,7 @@
     path: "{{ item }}"
     mode: 0750
     owner: "{{ kafka_user }}"
-    group: "{{ Kafka_group }}"
+    group: "{{ kafka_group }}"
   with_items:
     - "{{ kafka_etc_dir }}"
     - "{{ kafka_data_dir }}"
