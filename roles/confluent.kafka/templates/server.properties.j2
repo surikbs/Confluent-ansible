@@ -1,0 +1,62 @@
+# Maintained by Ansible
+
+############################ License ###########################################
+
+ldap.authorizer.license={{ confluent_license }}
+
+############################# Server Basics ####################################
+
+broker.id={{ broker_id | default(groups.kafka_broker.index(inventory_hostname) + 1)}}
+listeners=SASL_PLAINTEXT://{{ inventory_hostname }}:{{ kafka_port }}
+#broker.rack=rack-a
+delete.topic.enable=true
+unclean.leader.election.enable=true
+message.max.bytes=1000012
+replica.fetch.max.bytes=1048576
+#adding the below 2 properties for the confluent 5.2.1 upgrade
+inter.broker.protocol.version=2.0
+log.message.format.version=2.0
+
+############################# Socket Server Settings ###########################
+
+security.inter.broker.protocol=SASL_PLAINTEXT
+num.network.threads=3
+num.io.threads=8
+socket.send.buffer.bytes=102400
+socket.receive.buffer.bytes=102400
+socket.request.max.bytes=104857600
+
+############################# Log Basics #######################################
+log.dirs={% for logdir in kafka_broker.datadir %}{% if loop.index > 1%},{% endif %}{{ logdir }}{% endfor %}
+num.partitions=50
+num.recovery.threads.per.data.dir=1
+
+############################# Log Flush Policy #################################
+
+#log.flush.interval.messages=10000
+#log.flush.interval.ms=1000
+
+############################# Log Retention Policy #############################
+
+log.retention.hours=168
+#log.retention.bytes=1073741824
+log.segment.bytes=1073741824
+log.retention.check.interval.ms=30000
+log.cleaner.enable=true
+log.cleaner.backoff.ms=15000
+
+############################# Zookeeper ########################################
+
+zookeeper.connect={% for host in groups['zookeeper'] %}{% if loop.index > 1%},{% endif %}{{ host }}:{{ zk_port }}{% endfor %}
+
+##################### Confluent Metrics Reporter ###############################
+
+metric.reporters=io.confluent.metrics.reporter.ConfluentMetricsReporter
+confluent.metrics.reporter.bootstrap.servers={% for host in groups['kafka_broker'] %}{% if loop.index > 1%},{% endif %}{{ host }}:{{ kafka_port }}{% endfor %}
+confluent.metrics.reporter.zookeeper.connect={% for host in groups['zookeeper'] %}{% if loop.index > 1%},{% endif %}{{ host }}:{{ zk_port }}{% endfor %}
+# Uncomment the following line if the metrics cluster has a single broker
+#confluent.metrics.reporter.topic.replicas=1
+
+##################### Confluent Proactive Support ##############################
+confluent.support.metrics.enable=false
+#confluent.support.customer.id=anonymous

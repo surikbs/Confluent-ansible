@@ -7,6 +7,8 @@ confluent_version: confluent-5.3.1
 confluent_bundle_path: "{{ confluent_home }}/{{ confluent_version }}"
 tar_location: "/home/vcsgscds/"
 
+confluent_license: ""
+
 confluent_etc_dir: "{{ confluent_appdir }}/etc"
 confluent_log_dir: "{{ confluent_appdir }}/log"
 confluent_data_dir: "{{ confluent_appdir }}/dataDir"
@@ -20,4 +22,10 @@ zk_etc_dir: "{{ confluent_etc_dir }}/zk"
 zk_log_dir: "{{ confluent_log_dir }}/zk"
 zk_data_dir: "{{ confluent_data_dir }}/zk"
 
+kafka_broker:
 kafka_port: 9092
+kafka_user: vcsgscds
+kafka_group: vcsgscds
+kafka_etc_dir: "{{ confluent_etc_dir }}/kafka"
+kafka_data_dir: "{{ confluent_data_dir }}/kafka"
+kafka_log_dir: "{{ confluent_log_dir }}/kafka"

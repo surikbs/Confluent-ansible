@@ -15,3 +15,12 @@
   tasks:
   - import_role:
       name: confluent.zookeeper
+
+- name: Kafka Provisioning
+  hosts: kafka_broker
+  gather_facts: no
+  tags:
+    - kafka_broker
+  tasks:
+  - import_role:
+      name: confluent.kafka

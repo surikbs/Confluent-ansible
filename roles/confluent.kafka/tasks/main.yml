@@ -1,0 +1,20 @@
+- name: Kafka Broker create directories
+  file:
+    state: directory
+    path: "{{ item }}"
+    mode: 0750
+    owner: "{{ kafka_user }}"
+    group: "{{ Kafka_group }}"
+  with_items:
+    - "{{ kafka_etc_dir }}"
+    - "{{ kafka_data_dir }}"
+    - "{{ kafka_log_dir }}"
+
+- name: Create kafka broker configs
+  template:
+    src: server.properties.j2
+    dest: "{{ kafka_etc_dir }}/zookeeper.properties"
+    mode: 0400
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+  register: kafka_config
