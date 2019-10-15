@@ -26,6 +26,7 @@ kafka_broker:
 kafka_port: 9092
 kafka_user: vcsgscds
 kafka_group: vcsgscds
+kafka_bin_dir: "{{ confluent_appdir }}/bin"
 kafka_etc_dir: "{{ confluent_etc_dir }}/kafka"
 kafka_data_dir: "{{ confluent_data_dir }}/kafka"
 kafka_log_dir: "{{ confluent_log_dir }}/kafka"
