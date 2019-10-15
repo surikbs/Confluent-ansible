@@ -13,8 +13,17 @@
 - name: Create kafka broker configs
   template:
     src: server.properties.j2
-    dest: "{{ kafka_etc_dir }}/zookeeper.properties"
+    dest: "{{ kafka_etc_dir }}/server.properties"
     mode: 0400
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
   register: kafka_config
+
+- name: Copy Log4j Properties
+  template:
+    src: log4j.properties.j2
+    dest: "{{ kafka_etc_dir }}/log4j.properties"
+    mode: 0400
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+  register: kafka_log4j_config

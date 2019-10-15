@@ -1,0 +1,18 @@
+---
+
+- hosts:
+    - kafka_broker
+  name: Start Kafka Broker
+  serial: 1
+  tasks:
+    - name: Starting kafka Broker
+      shell: |
+        export KAFKA_HEAP_OPTS="-Xmx1000M"
+        export LOG_DIR={{ kafka_log_dir }}
+        export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:{{ kafka_etc_dir }}/log4j.properties"
+        {{ kafka_bin_dir }}/kafka-server-start -daemon {{ kafka_etc_dir }}/server.properties
+      register: shell_out
+    - debug:
+        var: shell_out
+
+...

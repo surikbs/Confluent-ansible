@@ -2,7 +2,7 @@
 
 - hosts:
     - zookeeper
-  name: Start zookeeper in rolling fashion
+  name: Start zookeeper 
   serial: 1
   tasks:
     - name: Starting zookeeper
