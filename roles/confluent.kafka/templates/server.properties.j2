@@ -7,7 +7,7 @@ ldap.authorizer.license={{ confluent_license }}
 ############################# Server Basics ####################################
 
 broker.id={{ broker_id | default(groups.kafka_broker.index(inventory_hostname) + 1)}}
-listeners=SASL_PLAINTEXT://{{ inventory_hostname }}:{{ kafka_port }}
+listeners=PLAINTEXT://{{ inventory_hostname }}:{{ kafka_port }}
 #broker.rack=rack-a
 delete.topic.enable=true
 unclean.leader.election.enable=true
@@ -19,7 +19,7 @@ replica.fetch.max.bytes=1048576
 
 ############################# Socket Server Settings ###########################
 
-security.inter.broker.protocol=SASL_PLAINTEXT
+security.inter.broker.protocol=PLAINTEXT
 num.network.threads=3
 num.io.threads=8
 socket.send.buffer.bytes=102400
