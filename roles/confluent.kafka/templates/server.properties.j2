@@ -27,7 +27,7 @@ socket.receive.buffer.bytes=102400
 socket.request.max.bytes=104857600
 
 ############################# Log Basics #######################################
-log.dirs={% for logdir in kafka_broker.kafka_data_dir %}{% if loop.index > 1%},{% endif %}{{ logdir }}{% endfor %}
+log.dirs={{ kafka_data_dir }}
 num.partitions=50
 num.recovery.threads.per.data.dir=1
 
