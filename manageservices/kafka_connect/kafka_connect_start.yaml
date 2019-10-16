@@ -9,7 +9,7 @@
       shell: |
         export LOG_DIR={{ kafka_connect_log_dir }}
         export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:{{ kafka_connect_etc_dir }}/log4j.properties"
-        {{ kafka_bin_dir }}/connect-distributed -daemon {{ kafka_connect_etc_dir }}/connect-cluster-1-avro-distributed.properties
+        {{ kafka_bin_dir }}/connect-distributed -daemon {{ kafka_connect_etc_dir }}/connect-distributed.properties
       register: shell_out
     - debug:
         var: shell_out
