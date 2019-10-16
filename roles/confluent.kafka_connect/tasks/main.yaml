@@ -1,4 +1,4 @@
-- name: Kafka Broker create directories
+- name: Kafka connect create directories
   file:
     state: directory
     path: "{{ item }}"
@@ -10,7 +10,7 @@
     - "{{ kafka_connect_data_dir }}"
     - "{{ kafka_connect_log_dir }}"
 
-- name: Create kafka broker configs
+- name: Create kafka connect configs
   template:
     src: connect-distributed.properties.j2
     dest: "{{ kafka_connect_etc_dir }}/connect-distributed.properties"
