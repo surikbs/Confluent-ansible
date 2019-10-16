@@ -30,3 +30,9 @@ kafka_bin_dir: "{{ confluent_appdir }}/bin"
 kafka_etc_dir: "{{ confluent_etc_dir }}/kafka"
 kafka_data_dir: "{{ confluent_data_dir }}/kafka"
 kafka_log_dir: "{{ confluent_log_dir }}/kafka"
+
+kafka_connect:
+confluent_plugin_dir: "{{ confluent_appdir }}/plugins"
+kafka_connect_etc_dir: "{{ confluent_etc_dir }}/kafka_connect"
+kafka_connect_data_dir: "{{ confluent_data_dir }}/kafka_connect"
+kafka_connect_log_dir: "{{ confluent_log_dir }}/kafka_connect"

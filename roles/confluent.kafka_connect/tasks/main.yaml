@@ -6,14 +6,14 @@
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
   with_items:
-    - "{{ kafka_etc_dir }}"
-    - "{{ kafka_data_dir }}"
-    - "{{ kafka_log_dir }}"
+    - "{{ kafka_connect_etc_dir }}"
+    - "{{ kafka_connect_data_dir }}"
+    - "{{ kafka_connect_log_dir }}"
 
 - name: Create kafka broker configs
   template:
-    src: server.properties.j2
-    dest: "{{ kafka_etc_dir }}/server.properties"
+    src: connect-distributed.properties.j2
+    dest: "{{ kafka_etc_dir }}/connect-distributed.properties"
     mode: 0400
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
@@ -21,7 +21,7 @@
 - name: Copy Log4j Properties
   template:
     src: log4j.properties.j2
-    dest: "{{ kafka_etc_dir }}/log4j.properties"
+    dest: "{{ kafka_connect_etc_dir }}/log4j.properties"
     mode: 0400
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"

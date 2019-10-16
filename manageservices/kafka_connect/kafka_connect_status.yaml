@@ -1,0 +1,16 @@
+- hosts:
+    - kafka_connect
+  name: kafka Connect status
+  tasks:
+    - name: Kafka Connect engine status
+      shell: |
+        if [ $(ps ax | grep -i 'org\.apache\.kafka.connect\.cli\.ConnectDistributed' | grep java | grep -v grep | wc -l) -gt 0 ]
+        then
+          echo Kafka connect engine is Running
+        else
+          echo Kafka connect engine is Not Running
+        fi
+      register: shell_out
+    - debug:
+        var: shell_out.stdout
+...
