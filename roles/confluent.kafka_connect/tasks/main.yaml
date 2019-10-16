@@ -13,7 +13,7 @@
 - name: Create kafka broker configs
   template:
     src: connect-distributed.properties.j2
-    dest: "{{ kafka_etc_dir }}/connect-distributed.properties"
+    dest: "{{ kafka_connect_etc_dir }}/connect-distributed.properties"
     mode: 0400
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
