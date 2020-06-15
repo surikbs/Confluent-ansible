@@ -1,14 +1,14 @@
 - hosts:
-    - kafka_connect
+    - kafka_broker
   name: kafka Broker status
   tasks:
     - name: Kafka Broker status
       shell: |
-      CPIDS=$(ps ax | grep -i 'io\.confluent\.support\.metrics\.SupportedKafka' | grep java | grep -v grep | grep connect-cluster-2-avro-distributed | awk '{print $1}')
-      for PID in $CPIDS; do
+        CPIDS=$(ps ax | grep -i 'io\.confluent\.support\.metrics\.SupportedKafka' | grep java | grep -v grep | awk '{print $1}')
+        for PID in $CPIDS; do
          kill -s TERM $PID
          while kill -0 "$PID" >/dev/null 2>&1; do sleep 1; done
-      done
+        done
       register: shell_out
     - debug:
         var: shell_out.stdout

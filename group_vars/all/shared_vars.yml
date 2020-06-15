@@ -1,11 +1,11 @@
-confluent_user: vcsgscds
-confluent_group: vcsgscds
-confluent_home: /opt/vcs/pds
+confluent_user: vcs_kafka
+confluent_group: vcs_kafka
+confluent_home: /opt/vcs/kafka
 confluent_appdir: "{{ confluent_home }}/confluent"
-confluent_tar_version: confluent-5.3.1-2.12
-confluent_version: confluent-5.3.1
-confluent_bundle_path: "{{ confluent_home }}/{{ confluent_version }}"
-tar_location: "/home/vcsgscds/"
+confluent_tar_version: confluent-5.5.0-2.12
+confluent_version: confluent-5.5.0
+confluent_bundle_path: "{{ confluent_home }}/bundles/{{ confluent_version }}"
+tar_location: "/home/vcs_kafka/"
 
 confluent_license: ""
 
@@ -15,8 +15,8 @@ confluent_data_dir: "{{ confluent_appdir }}/dataDir"
 
 zookeeper:
 zk_port: 2181
-zk_user: vcsgscds
-zk_group: vcsgscds
+zk_user: vcs_kafka
+zk_group: vcs_kafka
 zk_bin_dir: "{{ confluent_appdir }}/bin"
 zk_etc_dir: "{{ confluent_etc_dir }}/zk"
 zk_log_dir: "{{ confluent_log_dir }}/zk"
@@ -24,8 +24,8 @@ zk_data_dir: "{{ confluent_data_dir }}/zk"
 
 kafka_broker:
 kafka_port: 9092
-kafka_user: vcsgscds
-kafka_group: vcsgscds
+kafka_user: vcs_kafka
+kafka_group: vcs_kafka
 kafka_bin_dir: "{{ confluent_appdir }}/bin"
 kafka_etc_dir: "{{ confluent_etc_dir }}/kafka"
 kafka_data_dir: "{{ confluent_data_dir }}/kafka"

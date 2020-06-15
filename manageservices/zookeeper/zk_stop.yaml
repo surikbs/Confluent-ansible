@@ -1,14 +1,14 @@
 - hosts:
-    - kafka_connect
-  name: kafka Broker status
+    - zookeeper
+  name: zookeeper stop
   tasks:
-    - name: Kafka Broker status
+    - name: zookeeper stop
       shell: |
-      CPIDS=$(ps ax | grep -i 'org\.apache\.zookeeper\.server\.quorum\.QuorumPeerMain' | grep java | grep -v grep | grep connect-cluster-2-avro-distributed | awk '{print $1}')
-      for PID in $CPIDS; do
+        CPIDS=$(ps ax | grep -i 'org\.apache\.zookeeper\.server\.quorum\.QuorumPeerMain' | grep java | grep -v grep | awk '{print $1}');
+        for PID in $CPIDS; do
          kill -s TERM $PID
          while kill -0 "$PID" >/dev/null 2>&1; do sleep 1; done
-      done
+        done
       register: shell_out
     - debug:
         var: shell_out.stdout
