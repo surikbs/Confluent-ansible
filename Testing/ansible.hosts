@@ -1,13 +1,9 @@
-[all]
-confluent_user=vcsgscds
-confluent_home="/home/vcsgscds"
+[all:vars]
+confluent_user=vcs_kafka
+confluent_home="/home/vcs_kafka"
 
 [zk]
-10.175.0.70
-10.175.0.21
-10.175.0.54
+192.168.104.5
 
 [kafka]
-10.175.0.70
-10.175.0.21
-10.175.0.54
+192.168.104.4
