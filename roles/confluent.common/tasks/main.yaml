@@ -1,38 +1,39 @@
-# - name: Generic folder structure creation
-#   file:
-#     state: directory
-#     path: "{{ item }}"
-#     mode: "0755"
-#     owner: "{{ confluent_user }}"
-#     group: "{{ confluent_group }}"
-#   with_items:
-#     - "{{ confluent_appdir }}"
-#     - "{{ confluent_appdir }}/bundles"
-#     - "{{ confluent_appdir }}/etc"
-
-- name: Download the tar ball from the confluent website
-  get_url:
-   url: http://packages.confluent.io/archive/5.3/confluent-5.3.1-2.12.tar.gz
-   dest: "/tmp"
+- name: Generic folder structure creation
+  file:
+    state: directory
+    path: "{{ item }}"
+    mode: "0755"
+    owner: "{{ confluent_user }}"
+    group: "{{ confluent_group }}"
+  with_items:
+    - "{{ confluent_appdir }}"
+    - "{{ confluent_appdir }}/bundles"
+    - "{{ confluent_appdir }}/etc"
 
 #- name: Download the tar ball from the confluent website
-#  unarchive:
-#    src: "{{ confluent_appdir }}/bundles/{{ confluent_version }}.tar.gz"
-#    dest: "{{ confluent_appdir }}/bundles/"
+#  get_url:
+#   url: "{{ confluent_package_url }}"
+#   dest: "/tmp"
+#  delegate_to: 127.0.0.1
 
-# - name: Extracting the tar ball to bundles location
-#   unarchive:
-#     src: "{{ tar_location }}/{{ confluent_tar_version }}.tar"
-#     dest: "{{ confluent_appdir }}/bundles/"
+- name: copy the confluent bundle to the location on remote machine
+  copy:
+    src: "/tmp/{{ confluent_tar_version }}.tar.gz"
+    dest: "{{ confluent_appdir }}/bundles/{{ confluent_tar_version }}.tar.gz"
 
-# - name: Symlinks for the confluent bin directory
-#   file:
-#     state: link
-#     src: "{{ confluent_appdir }}//bundles/{{ confluent_version }}/bin"
-#     dest: "{{ confluent_appdir }}/bin"
+- name: Extracting the tar ball to bundles location 
+  unarchive:
+    src: "{{ confluent_appdir }}/bundles/{{ confluent_tar_version }}.tar.gz"
+    dest: "{{ confluent_appdir }}/bundles/"
 
-# - name: Symlinks for the confluent plugin directory
-#   file:
-#     state: link
-#     src: "{{ confluent_appdir }}//bundles/{{ confluent_version }}/share/java"
-#     dest: "{{ confluent_appdir }}/plugins"
+- name: Symlinks for the confluent bin directory
+  file:
+    state: link
+    src: "{{ confluent_appdir }}//bundles/{{ confluent_version }}/bin"
+    dest: "{{ confluent_appdir }}/bin"
+
+- name: Symlinks for the confluent plugin directory
+  file:
+    state: link
+    src: "{{ confluent_appdir }}//bundles/{{ confluent_version }}/share/java"
+    dest: "{{ confluent_appdir }}/plugins"

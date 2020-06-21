@@ -2,6 +2,7 @@ confluent_user: vcs_kafka
 confluent_group: vcs_kafka
 confluent_home: /opt/vcs/kafka
 confluent_appdir: "{{ confluent_home }}/confluent"
+confluent_package_url: http://packages.confluent.io/archive/5.5/confluent-5.5.0-2.12.tar.gz
 confluent_tar_version: confluent-5.5.0-2.12
 confluent_version: confluent-5.5.0
 confluent_bundle_path: "{{ confluent_home }}/bundles/{{ confluent_version }}"
