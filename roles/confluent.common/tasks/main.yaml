@@ -25,6 +25,7 @@
   unarchive:
     src: "{{ confluent_appdir }}/bundles/{{ confluent_tar_version }}.tar.gz"
     dest: "{{ confluent_appdir }}/bundles/"
+    remote_src: yes
 
 - name: Symlinks for the confluent bin directory
   file:
