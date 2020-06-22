@@ -1,11 +1,11 @@
 - name: Server Setup
- hosts: all
- gather_facts: no
- tags:
-  - common
- tasks:
-  - import_role:
-      name: confluent.common
+  hosts: all
+  gather_facts: no
+  tags:
+    - common
+  tasks:
+    - import_role:
+        name: confluent.common
 
 - name: Zookeeper Provisioning
   hosts: zookeeper
