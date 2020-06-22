@@ -10,11 +10,11 @@
     - "{{ confluent_appdir }}/bundles"
     - "{{ confluent_appdir }}/etc"
 
-#- name: Download the tar ball from the confluent website
-#  get_url:
-#   url: "{{ confluent_package_url }}"
-#   dest: "/tmp"
-#  delegate_to: 127.0.0.1
+- name: Download the tar ball from the confluent website
+  get_url:
+   url: "{{ confluent_package_url }}"
+   dest: "/tmp"
+  delegate_to: 127.0.0.1
 
 - name: copy the confluent bundle to the location on remote machine
   copy:
