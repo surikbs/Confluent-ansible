@@ -32,7 +32,7 @@
   copy:
     src: "/tmp/{{ confluent_tar_version }}.tar.gz"
     dest: "{{ confluent_appdir }}/bundles/{{ confluent_tar_version }}.tar.gz"
-    when: confluent_bundle_status.stat.exists == false
+  when: confluent_bundle_status.stat.exists == false
 
 - name: Extracting the tar ball to bundles location 
   unarchive:
