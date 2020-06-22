@@ -23,10 +23,16 @@
   delegate_to: 127.0.0.1
   when: bundle_download_status.stat.exists == false
 
+- name: checking if the bundle is present in confluent bundle directory
+  stat: 
+     path: "{{ confluent_appdir }}/bundles/{{ confluent_tar_version }}.tar.gz"
+  register: confluent_bundle_status
+
 - name: copy the confluent bundle to the location on remote machine
   copy:
     src: "/tmp/{{ confluent_tar_version }}.tar.gz"
     dest: "{{ confluent_appdir }}/bundles/{{ confluent_tar_version }}.tar.gz"
+    when: confluent_bundle_status.stat.exists == false
 
 - name: Extracting the tar ball to bundles location 
   unarchive:
