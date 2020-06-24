@@ -1,0 +1,14 @@
+listeners=http://0.0.0.0:8088
+
+#------ Logging config -------
+
+ksql.logging.processing.topic.auto.create=true
+ksql.logging.processing.stream.auto.create=true
+
+#------ External service config -------
+bootstrap.servers={% for host in groups['kafka_broker'] %}{% if loop.index > 1%},{% endif %}{{ host }}:{{ kafka_port }}{% endfor %}
+
+ksql.internal.topic.replicas=4
+ksql.streams.replication.factor=4
+ksql.streams.state.dir=/opt/vcs/kafka/confluent/datastore
+ksql.streams.num.standby.replicas=1

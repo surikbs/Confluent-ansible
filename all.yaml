@@ -29,7 +29,16 @@
 #  hosts: kafka_connect
 #  gather_facts: no
 #  tags:
-#    - kafka_broker
+#    - kafka_connect
 #  tasks:
 #  - import_role:
 #      name: confluent.kafka_connect
+
+# - name: ksql Provisioning
+#   hosts: ksql
+#   gather_facts: no
+#   tags:
+#     - ksql
+#   tasks:
+#   - import_role:
+#       name: confluent.ksql

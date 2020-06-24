@@ -37,3 +37,12 @@ confluent_plugin_dir: "{{ confluent_appdir }}/plugins"
 kafka_connect_etc_dir: "{{ confluent_etc_dir }}/kafka_connect"
 kafka_connect_data_dir: "{{ confluent_data_dir }}/kafka_connect"
 kafka_connect_log_dir: "{{ confluent_log_dir }}/kafka_connect"
+
+ksql:
+ksql_port: 8088
+ksql_user: vcs_kafka
+ksql_group: vcs_kafka
+ksql_bin_dir: "{{ confluent_appdir }}/bin"
+ksql_etc_dir: "{{ confluent_etc_dir }}/ksql"
+ksql_log_dir: "{{ confluent_log_dir }}/ksql"
+ksql_data_dir: "{{ confluent_data_dir }}/ksql"

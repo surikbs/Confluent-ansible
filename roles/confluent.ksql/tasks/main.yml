@@ -1,0 +1,32 @@
+---
+- include_role:
+    name: confluent.common
+  when: not common_role_completed|bool
+
+- name: confluent KSQL - create directories
+  file:
+    state: directory
+    path: "{{ item }}"
+    mode: 0750
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+  with_items:
+    - "{{ ksql_etc_dir }}"
+    - "{{ ksql_data_dir }}"
+    - "{{ ksql_log_dir }}"
+
+- name: Create ksql configs
+  template:
+    src: ksql-server.properties.j2
+    dest: "{{ ksql_etc_dir }}/ksql-server.properties"
+    mode: 0400
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+
+- name: Copy Log4j Properties
+  template:
+    src: log4j.properties.j2
+    dest: "{{ ksql_etc_dir }}/log4j.properties"
+    mode: 0400
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
