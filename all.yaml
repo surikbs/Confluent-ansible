@@ -25,14 +25,14 @@
   - import_role:
       name: confluent.kafka
 
-#- name: Kafka connect Provisioning
-#  hosts: kafka_connect
-#  gather_facts: no
-#  tags:
-#    - kafka_connect
-#  tasks:
-#  - import_role:
-#      name: confluent.kafka_connect
+- name: Kafka connect Provisioning
+  hosts: kafka_connect
+  gather_facts: no
+  tags:
+    - kafka_connect
+  tasks:
+  - import_role:
+      name: confluent.kafka_connect
 
 # - name: ksql Provisioning
 #   hosts: ksql
