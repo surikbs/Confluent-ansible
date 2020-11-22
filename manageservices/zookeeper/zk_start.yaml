@@ -7,9 +7,16 @@
   tasks:
     - name: Starting zookeeper
       shell: |
+        if [ $(ps ax | grep -i 'org\.apache\.zookeeper\.server\.quorum\.QuorumPeerMain' | grep java | grep -v grep | wc -l) -gt 0 ]
+        then
+          echo Zookeeper Running
+        else
+          echo Zookeeper Not Running. So starting Zookeeper
         export KAFKA_HEAP_OPTS="-Xmx1000M"
         export LOG_DIR={{ zk_log_dir }}
         {{ zk_bin_dir }}/zookeeper-server-start -daemon {{ zk_etc_dir }}/zookeeper.properties
+
+        fi
       register: shell_out
     - debug:
         var: shell_out
