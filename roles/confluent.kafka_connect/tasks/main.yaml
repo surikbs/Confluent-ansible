@@ -27,4 +27,4 @@
     group: "{{ kafka_group }}"
 
 - name: Copy Connect plugins
-  command: cp -r {{ playbook_dir }} {{ confluent_appdir }}/plugins
+  command: cp -r {{ playbook_dir }}/connectjars/* {{ confluent_appdir }}/plugins
