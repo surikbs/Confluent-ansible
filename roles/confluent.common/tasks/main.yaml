@@ -16,12 +16,12 @@
   delegate_to: 127.0.0.1
   register: bundle_download_status
   
-- name: Download the tar ball from the confluent website
-  get_url:
-   url: "{{ confluent_package_url }}"
-   dest: "/tmp"
-  delegate_to: 127.0.0.1
-  when: bundle_download_status.stat.exists == false
+# - name: Download the tar ball from the confluent website
+#   get_url:
+#    url: "{{ confluent_package_url }}"
+#    dest: "/tmp"
+#   delegate_to: 127.0.0.1
+#   when: bundle_download_status.stat.exists == false
 
 - name: checking if the bundle is present in confluent bundle directory
   stat: 
