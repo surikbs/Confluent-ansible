@@ -27,8 +27,6 @@
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
 
-- name: Create user defined plugins dir
-
 - name: Copy Connect plugins
   command: cp -r {{ playbook_dir }}/connectjars/{{ item }} {{ kafka_user_defined_plugins_dir }}/
   with_items:
