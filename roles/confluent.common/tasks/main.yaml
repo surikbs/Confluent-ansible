@@ -61,7 +61,7 @@
 - name: Copy profile file
   template:
     src: bash_profile
-    dest: "{{ confluent_user_home }}/.bash_profile"
+    dest: "~/.bash_profile"
     mode: 0400
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
