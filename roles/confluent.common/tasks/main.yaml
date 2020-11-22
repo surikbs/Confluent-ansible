@@ -57,6 +57,7 @@
     state: link
     src: "{{ confluent_appdir }}//bundles/{{ confluent_version }}/share/java"
     dest: "{{ confluent_appdir }}/plugins"
+    
 - name: Copy profile file
   template:
     src: bash_profile
