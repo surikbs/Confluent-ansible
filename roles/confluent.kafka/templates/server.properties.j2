@@ -52,10 +52,10 @@ zookeeper.connect={% for host in groups['zookeeper'] %}{% if loop.index > 1%},{%
 
 ##################### Confluent Metrics Reporter ###############################
 
-metric.reporters=io.confluent.metrics.reporter.ConfluentMetricsReporter
-confluent.metrics.reporter.bootstrap.servers={% for host in groups['kafka_broker'] %}{% if loop.index > 1%},{% endif %}{{ host }}:{{ kafka_port }}{% endfor %}
+#metric.reporters=io.confluent.metrics.reporter.ConfluentMetricsReporter
+#confluent.metrics.reporter.bootstrap.servers={% for host in groups['kafka_broker'] %}{% if loop.index > 1%},{% endif %}{{ host }}:{{ kafka_port }}{% endfor %}
 
-confluent.metrics.reporter.zookeeper.connect={% for host in groups['zookeeper'] %}{% if loop.index > 1%},{% endif %}{{ host }}:{{ zk_port }}{% endfor %}
+#confluent.metrics.reporter.zookeeper.connect={% for host in groups['zookeeper'] %}{% if loop.index > 1%},{% endif %}{{ host }}:{{ zk_port }}{% endfor %}
 
 # Uncomment the following line if the metrics cluster has a single broker
 #confluent.metrics.reporter.topic.replicas=1
