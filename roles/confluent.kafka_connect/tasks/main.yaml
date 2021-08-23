@@ -26,8 +26,3 @@
     mode: 0400
     owner: "{{ kafka_user }}"
     group: "{{ kafka_group }}"
-
-- name: Copy Connect plugins
-  command: cp -r {{ playbook_dir }}/connectjars/{{ item }} {{ kafka_user_defined_plugins_dir }}/
-  with_items:
-    - confluentinc-kafka-connect-http-1.0.16
