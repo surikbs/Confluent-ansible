@@ -10,12 +10,17 @@
     - "{{ confluent_appdir }}/bundles"
     - "{{ confluent_appdir }}/etc"
 
+- name: checking if the confluent package is extracted
+  stat: 
+     path: "{{ confluent_appdir }}/bundles/{{ confluent_version }}"
+  register: confluent_bundle_extract_status
+
 - name: checking if the bundle is present in /tmp directory
   stat: 
      path: "/tmp/{{ confluent_tar_version }}.tar.gz"
   delegate_to: 127.0.0.1
   register: bundle_download_status
-  
+
 - name: Download the tar ball from the confluent website
   get_url:
    url: "{{ confluent_package_url }}"
@@ -33,11 +38,6 @@
     src: "/tmp/{{ confluent_tar_version }}.tar.gz"
     dest: "{{ confluent_appdir }}/bundles/{{ confluent_tar_version }}.tar.gz"
   when: confluent_bundle_status.stat.exists == false
-
-- name: checking if the bundle is extracted in confluent bundle directory
-  stat: 
-     path: "{{ confluent_appdir }}/bundles/{{ confluent_version }}"
-  register: confluent_bundle_extract_status
 
 - name: Extracting the tar ball to bundles location 
   unarchive:
