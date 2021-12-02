@@ -1,7 +1,7 @@
 # Confluent-ansible
 This repository contains ansible code for installing, configuring and running confluent platform on your macbook or on linux distribution virtual machine.
 
-This code can be leveraged to build kafka cluster with multiple servers.
+This code can be leveraged to build kafka cluster with multiple servers and this is tar ball based installation
 
 Features:
 - Downloads the specific Confluent Platform version to /tmp directory
