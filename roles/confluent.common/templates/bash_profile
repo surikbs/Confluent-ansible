@@ -1,4 +1,3 @@
 export CONFLUENT_HOME={{ confluent_home }}confluent/
 export CONFLUENT_CLI=$CONFLUENT_HOME/bundles/confluent/
-export CONFLUENT_SECURITY_MASTER_KEY=wsDcnEk8XH2Md64l5TCCyatn0Zt6VoVSpHjKACMeC+Q=
 PATH="$PATH:$CONFLUENT_HOME/bin:$CONFLUENT_CLI:$PATH"
