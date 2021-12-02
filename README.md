@@ -11,17 +11,12 @@ Features:
 - Java
 
 ### Installation and Configuration
-The below command helps in installation and configuration.
-``` ansible-playbook -i hosts.yml all.yaml ```
-To check the start the cluster
-``` sh startall.sh ```
-For the status
-``` sh statusall.sh```
-For stopping the cluster
-``` sh stopall.sh ```
+The below command helps in installation and configuration ``` ansible-playbook -i hosts.yml all.yaml ```.
+To check the start the cluster ``` sh startall.sh ```.
+For the status ``` sh statusall.sh```.
+For stopping the cluster ``` sh stopall.sh ```.
 
 Note: these commands are run from the repo directory
 ### Customization
 
 The list of vars to be changed to suit your system (group_vars/all/shared_vars.yaml file).
-- 
