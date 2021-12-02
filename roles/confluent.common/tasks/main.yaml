@@ -12,7 +12,7 @@
 
 - name: checking if the confluent package is extracted
   stat: 
-     path: "{{ confluent_appdir }}/bundles/{{ confluent_version }}"
+     path: "{{ confluent_appdir }}/bundles/{{ confluent_tar_version }}"
   register: confluent_bundle_extract_status
 
 - name: checking if the bundle is present in /tmp directory
@@ -49,13 +49,13 @@
 - name: Symlinks for the confluent bin directory
   file:
     state: link
-    src: "{{ confluent_appdir }}//bundles/{{ confluent_version }}/bin"
+    src: "{{ confluent_appdir }}//bundles/{{ confluent_tar_version }}/bin"
     dest: "{{ confluent_appdir }}/bin"
 
 - name: Symlinks for the confluent plugin directory
   file:
     state: link
-    src: "{{ confluent_appdir }}//bundles/{{ confluent_version }}/share/java"
+    src: "{{ confluent_appdir }}//bundles/{{ confluent_tar_version }}/share/java"
     dest: "{{ confluent_appdir }}/plugins"
     
 - name: Copy profile file
