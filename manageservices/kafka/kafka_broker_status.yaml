@@ -4,11 +4,11 @@
   tasks:
     - name: Kafka Broker status
       shell: |
-        if [ $(ps ax | grep -i 'io\.confluent\.support\.metrics\.SupportedKafka' | grep java | grep -v grep | wc -l) -gt 0 ]
+        if [ $(ps ax | grep -i 'kafka\.Kafka' | grep java | grep -v grep | wc -l) -gt 0 ]
         then
-          echo Kafka Running
+          echo Kafka Server is Running
         else
-          echo Kafka Not Running
+          echo Kafka Server Not Running
         fi
       register: shell_out
     - debug:
