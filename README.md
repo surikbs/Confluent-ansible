@@ -9,3 +9,4 @@ This repository contains a ansible code for installing, configuring and running 
 The below command helps in installation and configuration.
 
 '''ansible-playbook -i hosts.yml all.yaml
+'''
