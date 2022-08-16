@@ -1,0 +1,16 @@
+
+---
+
+- hosts:
+    - kafka_ccc
+  name: Start Control center
+  tasks:
+    - name: Starting Control center
+      shell: |
+        export CONTROL_CENTER_OPTS="-Djava.io.tmpdir={{ kafka_ccc_temp_dir }}"
+        export CONTROL_CENTER_LOG4J_OPTS="-Dlog4j.configuration=file:{{ kafka_ccc_etc_dir }}/log4j.properties"
+        {{ kafka_bin_dir }}/control-center-start -daemon {{ kafka_ccc_etc_dir }}/control-center.properties
+      register: shell_out
+    - debug:
+        var: shell_out
+...

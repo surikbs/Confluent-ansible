@@ -1,12 +1,12 @@
-confluent_user: sba
+confluent_user: surikbs
 confluent_group: staff
-confluent_home: /Users/sba/ConfluentInstall
+confluent_home: /Users/surikbs/ConfluentInstall
 confluent_appdir: "{{ confluent_home }}/confluent"
-confluent_version: 6.2
-confluent_tar_version: "confluent-6.2.0"
-confluent_package_url: https://packages.confluent.io/archive/6.2/{{ confluent_tar_version }}.tar.gz
+confluent_version: 7.2
+confluent_tar_version: "confluent-7.2.1"
+confluent_package_url: https://packages.confluent.io/archive/7.2/{{ confluent_tar_version }}.tar.gz
 confluent_bundle_path: "{{ confluent_home }}/bundles/{{ confluent_version }}"
-tar_location: "/Users/sba/tmp"
+tar_location: "/Users/surikbs/tmp"
 
 confluent_license: ""
 
@@ -16,7 +16,7 @@ confluent_data_dir: "{{ confluent_appdir }}/dataDir"
 
 zookeeper:
 zk_port: 2181
-zk_user: sba
+zk_user: surikbs
 zk_group: staff
 zk_bin_dir: "{{ confluent_appdir }}/bin"
 zk_etc_dir: "{{ confluent_etc_dir }}/zk"
@@ -25,7 +25,7 @@ zk_data_dir: "{{ confluent_data_dir }}/zk"
 
 kafka_broker:
 kafka_port: 9092
-kafka_user: sba
+kafka_user: surikbs
 kafka_group: staff
 kafka_bin_dir: "{{ confluent_appdir }}/bin"
 kafka_etc_dir: "{{ confluent_etc_dir }}/kafka"
@@ -41,9 +41,15 @@ kafka_user_defined_plugins_dir : "{{ confluent_appdir }}/kafka_user_defined_plug
 
 ksql:
 ksql_port: 8088
-ksql_user: sba
+ksql_user: surikbs
 ksql_group: staff
 ksql_bin_dir: "{{ confluent_appdir }}/bin"
 ksql_etc_dir: "{{ confluent_etc_dir }}/ksql"
 ksql_log_dir: "{{ confluent_log_dir }}/ksql"
 ksql_data_dir: "{{ confluent_data_dir }}/ksql"
+
+kafka_ccc:
+kafka_ccc_etc_dir: "{{ confluent_etc_dir }}/kafka_ccc"
+kafka_ccc_data_dir: "{{ confluent_data_dir }}/kafka_ccc"
+kafka_ccc_log_dir: "{{ confluent_log_dir }}/kafka_ccc"
+kafka_ccc_temp_dir: "{{ confluent_data_dir }}/kafka_ccc_temp"

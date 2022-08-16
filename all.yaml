@@ -34,6 +34,15 @@
   - import_role:
       name: confluent.kafka_connect
 
+- name: control center Provisioning
+  hosts: kafka_ccc
+  gather_facts: no
+  tags:
+    - kafka_ccc
+  tasks:
+    - import_role:
+        name: confluent.control_center
+
 # - name: ksql Provisioning
 #   hosts: ksql
 #   gather_facts: no

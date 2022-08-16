@@ -1,0 +1,28 @@
+- name: Confluent control center create directories
+  file:
+    state: directory
+    path: "{{ item }}"
+    mode: 0750
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+  with_items:
+    - "{{ kafka_ccc_etc_dir }}"
+    - "{{ kafka_ccc_data_dir }}"
+    - "{{ kafka_ccc_log_dir }}"
+    - "{{ kafka_ccc_temp_dir }}"
+
+- name: Create Confluent control center configs
+  template:
+    src: control-center.properties.j2
+    dest: "{{ kafka_ccc_etc_dir }}/control-center.properties"
+    mode: 0400
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"
+
+- name: Copy Log4j Properties
+  template:
+    src: log4j.properties.j2
+    dest: "{{ kafka_ccc_etc_dir }}/log4j.properties"
+    mode: 0400
+    owner: "{{ kafka_user }}"
+    group: "{{ kafka_group }}"

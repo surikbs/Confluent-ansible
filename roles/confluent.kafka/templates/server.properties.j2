@@ -13,9 +13,8 @@ delete.topic.enable=true
 unclean.leader.election.enable=true
 message.max.bytes=1000012
 replica.fetch.max.bytes=1048576
-#adding the below 2 properties for the confluent 5.2.1 upgrade
-inter.broker.protocol.version=2.7
-log.message.format.version=2.7
+inter.broker.protocol.version=3.1
+log.message.format.version=3.1
 
 ############################# Socket Server Settings ###########################
 
@@ -49,7 +48,6 @@ log.cleaner.backoff.ms=15000
 
 zookeeper.connect={% for host in groups['zookeeper'] %}{% if loop.index > 1%},{% endif %}{{ host }}:{{ zk_port }}{% endfor %}
 
-
 ##################### Confluent Metrics Reporter ###############################
 
 #metric.reporters=io.confluent.metrics.reporter.ConfluentMetricsReporter
@@ -63,7 +61,6 @@ zookeeper.connect={% for host in groups['zookeeper'] %}{% if loop.index > 1%},{%
 ##################### Confluent Proactive Support ##############################
 confluent.support.metrics.enable=false
 #confluent.support.customer.id=anonymous
-
 
 ###################### Custom Properties ######################################
 default.replication.factor=1
