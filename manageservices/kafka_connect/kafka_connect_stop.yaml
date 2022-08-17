@@ -7,7 +7,7 @@
         CPIDS=$(ps ax | grep -i 'org\.apache\.kafka\.connect\.cli\.ConnectDistributed' | grep java | grep -v grep | grep connect-cluster-2-avro-distributed | awk '{print $1}')
         for PID in $CPIDS; do
           kill -s TERM $PID
-          while kill -0 "$PID" >/dev/null 2>&1; do sleep 1; done
+          while kill -9 "$PID" >/dev/null 2>&1; do sleep 1; done
         done
       register: shell_out
     - debug:
