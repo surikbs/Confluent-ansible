@@ -6,9 +6,9 @@
       shell: |
         if [ $(ps ax | grep -i 'io\.confluent\.controlcenter\.ControlCenter' | grep java | grep -v grep | wc -l) -gt 0 ]
         then
-          echo Kafka connect engine is Running
+          echo Confluent Control Center is Running
         else
-          echo Kafka connect engine is Not Running
+          echo Confluent Control Center is Not Running
         fi
       register: shell_out
     - debug:
